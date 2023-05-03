@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblemonmdk",
+  "version": "0.1.0",
+  "name": "Cobblemon MDK",
+  "description": "Template",
+  "authors": [
+    "corgi in tights#5131"
+  ],
+  "license": "The Unlicense",
+  "icon": "assets/cobblemonmdk/logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.reyaan.cobblemonmdk.fabric.CobblemonMDK"
+    ]
+  },
+	"mixins": [
+		"cobblemonmdk.mixins.json"
+	],
+  "depends": {
+    "java": ">=17",
+    "minecraft": ">=1.19.2",
+    "fabricloader": ">=0.14.9",
+    "fabric": "*",
+    "architectury": ">=6.5.69",
+    "cobblemon": ">=1.3.1"
+  }
+}
