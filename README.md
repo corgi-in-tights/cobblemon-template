@@ -1,4 +1,4 @@
-# Rapid Development Kit - Cobblemon Fabric Mod (1.19.2)
+# Rapid Development Kit - Cobblemon Fabric (1.19.2)
 Intended as an alternative to the official templates because sometimes they wonk, sometimes they yeep and sometimes you just want plain ol' baddie java.
 
 Intended mainly for rapid development of sidemods, will include my preferred organized file structure, some comments, etc.
