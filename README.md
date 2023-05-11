@@ -1,5 +1,5 @@
-# Rapid Development Kit - Cobblemon Fabric (1.19.2)
-Intended as an alternative to the official templates because sometimes they wonk, sometimes they yeep and sometimes you just want plain ol' baddie java.
+# Rapid Development Kit - Cobblemon Fabric/Kotlin (1.19.2)
+For Java users: Change entrypoint in `fabric.mod.json` to default and remove dependency for `fabric-language-kotlin`.
 
 Intended mainly for rapid development of sidemods, will include my preferred organized file structure, some comments, etc.
 
