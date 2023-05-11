@@ -3,5 +3,5 @@ For Java users: Change entrypoint in `fabric.mod.json` to default and remove dep
 
 Intended mainly for rapid development of sidemods, includes Paragon config.
 
-###class_4048 Error
+### class_4048 Error
 Your Kotlin plugin is not being added to the project / it is not updated.
