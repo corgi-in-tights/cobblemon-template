@@ -1,29 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "cobblemonmdk",
+  "id": "modid",
   "version": "0.1.0",
-  "name": "Cobblemon MDK",
-  "description": "Template",
+  "name": "Example Mod",
+  "description": "",
   "authors": [
     "corgi in tights#5131"
   ],
   "license": "The Unlicense",
-  "icon": "assets/cobblemonmdk/logo.png",
+  "icon": "assets/modid/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.reyaan.cobblemonmdk.fabric.CobblemonMDK"
+      {
+        "adapter": "kotlin",
+        "value": "dev.reyaan.modid.fabric.Example"
+      }
     ]
   },
 	"mixins": [
-		"cobblemonmdk.mixins.json"
+		"modid.mixins.json"
 	],
   "depends": {
     "java": ">=17",
     "minecraft": ">=1.19.2",
     "fabricloader": ">=0.14.9",
+    "fabric-language-kotlin": ">=1.9.3+kotlin.1.8.20",
     "fabric": "*",
     "architectury": ">=6.5.69",
-    "cobblemon": ">=1.3.1"
+    "cobblemon": ">=1.3.2"
   }
 }

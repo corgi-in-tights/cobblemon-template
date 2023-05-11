@@ -2,9 +2,7 @@ plugins {
     id("java")
     id("dev.architectury.loom") version("1.1-SNAPSHOT")
     id("architectury-plugin") version("3.4-SNAPSHOT")
-    id("fabric-loom")
-    `maven-publish`
-    kotlin("jvm") version ("1.7.10")
+    kotlin("jvm") version ("1.8.20")
 }
 
 group = property("maven_group")!!
@@ -17,12 +15,14 @@ architectury {
 
 repositories {
     mavenCentral()
-    maven(url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+    maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
     maven("https://maven.impactdev.net/repository/development/")
+    // maven.modrinth > curse.maven
     maven {
-        url = uri("https://cursemaven.com")
+        name = "Modrinth"
+        url = uri("https://api.modrinth.com/maven")
         content {
-            includeGroup("curse.maven")
+            includeGroup("maven.modrinth")
         }
     }
 }
@@ -35,56 +35,24 @@ dependencies {
     // Fabric API
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}")
 
+    // Fabric Kotlin
+    modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin_version")}")
+
     // Architectury
-    modImplementation("dev.architectury", "architectury-fabric", "6.5.69")
+    modImplementation("dev.architectury:architectury-fabric:${property("architectury_version")}")
 
-    // Cobblemon
-    modImplementation("curse.maven:cobblemon-687131:${property("cobblemon_curse_file_id")}")
+    // Cobblemon - To ensure we are using the publicly released version
+    modImplementation("maven.modrinth:cobblemon:${property("cobblemon_version")}")
+    // modImplementation("com.cobblemon:fabric:1.3.1+1.19.2-SNAPSHOT")
 
-    // Testing
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    // Paragon Config Lib
+    include(modImplementation("maven.modrinth:paragon:${property("paragon_version")}")!!)
+
+    // JUnit
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit_version")}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${property("junit_version")}")
 }
 
-tasks {
-
-    processResources {
-        inputs.property("version", project.version)
-
-        filesMatching("fabric.mod.json") {
-            expand(mutableMapOf("version" to project.version))
-        }
-    }
-
-    jar {
-        from("LICENSE")
-    }
-
-    publishing {
-        publications {
-            create<MavenPublication>("mavenJava") {
-                artifact(remapJar) {
-                    builtBy(remapJar)
-                }
-                artifact(kotlinSourcesJar) {
-                    builtBy(remapSourcesJar)
-                }
-            }
-        }
-
-        // select the repositories you want to publish to
-        repositories {
-            // uncomment to publish to the local maven
-            // mavenLocal()
-        }
-    }
-
-    compileKotlin {
-        kotlinOptions.jvmTarget = "17"
-    }
-
-}
-
-java {
-    withSourcesJar()
+tasks.getByName<Test>("test") {
+    useJUnitPlatform()
 }
