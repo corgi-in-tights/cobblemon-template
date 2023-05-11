@@ -28,3 +28,6 @@ build/
 run/
 .idea/
 .gradle/
+
+.DS_Store
+**/.DS_Store
