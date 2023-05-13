@@ -10,25 +10,18 @@ import org.slf4j.Logger
 
 class Example : ModInitializer {
     companion object {
-        const val MOD_ID = "example"
-        const val MOD_NAME = "Example"
+        const val MOD_ID = "modid"
+        const val MOD_NAME = "Example Mod"
         val LOGGER: Logger = LogUtils.getLogger()
-    }
 
-    fun id(path: String): Identifier {
-        return Identifier(MOD_ID, path)
+        fun id(path: String): Identifier {
+            return Identifier(MOD_ID, path)
+        }
     }
-
-    fun log(value: String) {
-        LOGGER.info("{}: {}", MOD_NAME, value)
-    }
-
 
     override fun onInitialize() {
         ConfigManager.register(MOD_ID, ExampleConfig)
-        if (ExampleConfig.SEND_TEST_MESSAGE.get()) {
-            log("Hello, Example World!")
-        }
+        LOGGER.info("TEST CONFIG: " + ExampleConfig.ABOUT_ME.get())
     }
 
 }

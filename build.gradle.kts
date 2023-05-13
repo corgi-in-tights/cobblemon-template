@@ -41,11 +41,11 @@ dependencies {
     // Architectury
     modImplementation("dev.architectury:architectury-fabric:${property("architectury_version")}")
 
-    // Cobblemon - To ensure we are using the publicly released version
-    modImplementation("maven.modrinth:cobblemon:${property("cobblemon_version")}")
-    // modImplementation("com.cobblemon:fabric:1.3.1+1.19.2-SNAPSHOT")
+    // Cobblemon
+     modImplementation("com.cobblemon:fabric:${property("cobblemon_version")}")
 
-    // Paragon Config Lib
+    // Paragon Config
+    implementation("blue.endless:jankson:${property("jankson_version")}")
     include(modImplementation("maven.modrinth:paragon:${property("paragon_version")}")!!)
 
     // JUnit
